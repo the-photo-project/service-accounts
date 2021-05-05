@@ -1,0 +1,7 @@
+# disable any database related auto configuration for now as we did not decide on any database yet
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+server:
+  port : 8081
