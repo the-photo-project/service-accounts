@@ -9,7 +9,9 @@ Run the application with
 
 The application will listen on port 8081 and a first hello controller was added which you can test here: http://localhost:8081
 
-## Docker Build
+## Docker Build and Run
+
+Tested on Docker CE version 20.10.6
 
 To build the docker image for the micro service, first ensure that you have Docker installed, then run this command
 
@@ -52,7 +54,9 @@ docker stop srvacts-server
 
 Docker can be installed from here: https://docs.docker.com/get-docker/
 
-## Docker Compose Run
+## Docker Compose Build and Run
+
+Tested on docker-compose version 1.29.1
 
 To build all of the project containers and start them, use this command:
 
@@ -65,7 +69,5 @@ To shut them down, use this:
 ```
 docker-compose down
 ```
-
-There is one known bug: On the first run of docker-compose, it incorrectly runs a container with the wrong image (the build image, not the prod image).  The work-around is to make sure that the JAR file is in the same place in both images.  Hopefully the folks at docker-compose will fix this soon.  Eventually I guess we will move off docker-compose and do deploys via CI/CD.
 
 See [Project Help](HELP.md) for further guides.

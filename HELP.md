@@ -38,6 +38,7 @@ The following guides illustrate how to use some features concretely:
 
 * [Docker Installation](https://docs.docker.com/get-docker/)
 * [Docker Reference](https://docs.docker.com/reference/)
+* [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
 * [Docker Compose File Reference](https://docs.docker.com/compose/compose-file/)
 
 ### Guides

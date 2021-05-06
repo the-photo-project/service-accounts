@@ -12,8 +12,6 @@ services:
     environment:
       - SERVER_PORT=8081
       - MYSQL_URL=jdbc:mysql://photoproject-db/photoproject
-    volumes:
-      - ./:/app
     depends_on:
       - photoproject-db
 
