@@ -1,5 +1,7 @@
 # Getting Started
 
+## Java/Spring Boot/Maven
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
@@ -30,3 +32,17 @@ The following guides illustrate how to use some features concretely:
 * [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
+## Docker
+
+### Reference Documentation
+
+* [Docker Installation](https://docs.docker.com/get-docker/)
+* [Docker Reference](https://docs.docker.com/reference/)
+* [Docker Compose File Reference](https://docs.docker.com/compose/compose-file/)
+
+### Guides
+
+* [Docker Orientation and Setup](https://docs.docker.com/get-started/)
+* [Getting Started with Java (Docker)](https://docs.docker.com/language/java/)
+* [Docker for Java Developers (about security)](https://snyk.io/blog/docker-for-java-developers/)
+* [Docker Compose User Guide](https://docs.docker.com/compose/)
