@@ -1,5 +1,23 @@
-# disable any database related auto configuration for now as we did not decide on any database yet
+# YAML based Sprinb Boot properties file.
+#
+# Article on properties vs yaml: https://www.baeldung.com/spring-boot-yaml-vs-properties
+
+# In a JPA-based app, you can choose to let Hibernate create the schema
+# or use schema.sql, but you cannot do both. Make sure to set
+# spring.jpa.hibernate.ddl-auto to none if you use schema.sql.
+
+# See also https://spring.io/guides/gs/accessing-data-mysql/
+
 spring:
+  jpa:
+    hobernate:
+      ddl-auto: update
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://localhost/protoproject}
+    username: ${MYSQL_USER:photoproject}
+    password: ${MYSQL_PASS:photoproject}
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
 

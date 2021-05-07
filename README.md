@@ -61,6 +61,12 @@ Tested on docker-compose version 1.29.1
 To build all of the project containers and start them, use this command:
 
 ```
+docker-compose up -d --build
+```
+
+To run the previously built containers (without rebuilding), omit the ```--build``` flag as follows:
+
+```
 docker-compose up -d
 ```
 
@@ -69,5 +75,7 @@ To shut them down, use this:
 ```
 docker-compose down
 ```
+
+docker-compose can be installed from https://docs.docker.com/compose/install/
 
 See [Project Help](HELP.md) for further guides.
