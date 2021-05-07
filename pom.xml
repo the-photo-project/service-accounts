@@ -33,9 +33,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
+
+        <!-- there is a bug in liquibase versions prior 4.3.1 which prevents startup.
+         thats why we override the version of the spring boot parent pom here -->
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
+            <version>4.3.1</version>
         </dependency>
 
         <dependency>

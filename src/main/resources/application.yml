@@ -5,21 +5,28 @@
 # In a JPA-based app, you can choose to let Hibernate create the schema
 # or use schema.sql, but you cannot do both. Make sure to set
 # spring.jpa.hibernate.ddl-auto to none if you use schema.sql.
+# For versioned migrations of your schema updates you can also use liquibase to create/update
+# your schema. In this case you need to change spring.liquibase.enabled to true and
+# spring.jpa.hibernate.ddl-auto to none. The specified changelog should contain your
+# schema
 
 # See also https://spring.io/guides/gs/accessing-data-mysql/
 
 spring:
   jpa:
-    hobernate:
+    hibernate:
       ddl-auto: update
   datasource:
-    url: ${MYSQL_URL:jdbc:mysql://localhost/protoproject}
+    url: ${MYSQL_URL:jdbc:mysql://localhost/photoproject}
     username: ${MYSQL_USER:photoproject}
     password: ${MYSQL_PASS:photoproject}
     driver-class-name: com.mysql.jdbc.Driver
     initialization-mode: always
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  liquibase:
+    enabled: false
+    change-log: classpath:/db/changelog/service-accounts/create.xml
+
+
 
 server:
   port : 8081
