@@ -16,11 +16,24 @@
 # Copy our working directory into /app on the container.
 #
 # Use mvn to build our app.
+#
+# Try to cache dependencies for a faster build.
+# See https://stackoverflow.com/questions/42208442/maven-docker-cache-dependencies
 
 FROM maven:3-openjdk-11 AS build
-RUN mkdir /app
-COPY . /app
+# speed up Maven JVM a bit
+ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+# make source folder
+RUN mkdir -p /app
 WORKDIR /app
+# install maven dependency packages (keep in image)
+# 1. add pom.xml only here
+COPY pom.xml /app
+# 2. start downloading dependencies
+# RUN mvn verify clean --fail-never
+RUN mvn dependency:go-offline
+# 3. add all source code and start compiling
+COPY src /app/src
 RUN mvn clean package -DskipTests
 
 # This builds a minimal container just containing the JRE (Java Runtime, no Java
@@ -41,6 +54,9 @@ RUN mvn clean package -DskipTests
 
 FROM adoptopenjdk:11-jre-hotspot AS prod
 RUN mkdir -p /app/target
+RUN addgroup --system javauser && adduser --shell /bin/false --ingroup javauser javauser
 COPY --from=build /app/target/service-accounts-1.0.0-SNAPSHOT.jar /app/target
 WORKDIR /app/target
+RUN chown -R javauser:javauser /app
+USER javauser
 CMD ["java", "-jar", "/app/target/service-accounts-1.0.0-SNAPSHOT.jar"]
