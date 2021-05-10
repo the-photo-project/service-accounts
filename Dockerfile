@@ -19,8 +19,11 @@
 #
 # Try to cache dependencies for a faster build.
 # See https://stackoverflow.com/questions/42208442/maven-docker-cache-dependencies
+#
+# Maybe this can be done better with BuildKit:
+# https://stackoverflow.com/questions/51194755/mounting-volume-as-part-of-a-multi-stage-build
 
-FROM maven:3-openjdk-11 AS build
+FROM maven:3-openjdk-11 AS dependencies
 # speed up Maven JVM a bit
 ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 # make source folder
@@ -32,8 +35,18 @@ COPY pom.xml /app
 # 2. start downloading dependencies
 # RUN mvn verify clean --fail-never
 RUN mvn dependency:go-offline
+
 # 3. add all source code and start compiling
+
+FROM maven:3-openjdk-11 AS build
+# speed up Maven JVM a bit
+ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+# make source folder
+RUN mkdir -p /app
+WORKDIR /app
+COPY pom.xml /app
 COPY src /app/src
+COPY --from=dependencies /root/.m2 /root/.m2
 RUN mvn clean package -DskipTests
 
 # This builds a minimal container just containing the JRE (Java Runtime, no Java
