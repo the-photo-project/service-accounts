@@ -19,6 +19,14 @@ To build the docker image for the micro service, first ensure that you have Dock
 docker build --tag service-accounts .
 ```
 
+Or you can build it in steps using these commands:
+
+```
+docker build --target dependencies --tag dependencies .
+docker build --target build --tag build .
+docker build --tag service-accounts .
+```
+
 After building the image, you can verify that it has been created using this command:
 
 ```
