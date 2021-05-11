@@ -1,4 +1,4 @@
-package com.photoproject.service.accounts;
+package com.photoproject.service.accounts.accounts;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
