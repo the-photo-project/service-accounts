@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~
+  ~ Copyright (c) 2015 apollon GmbH+Co. KG All Rights Reserved.
+  -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="create-sequence.hibernate" author="shomeier">
+        <createSequence sequenceName="hibernate_sequence" startValue="1000" incrementBy="1" cycle="false"/>
+    </changeSet>
+
+    <changeSet id="create-table.account" author="shomeier">
+        <createTable tableName="account">
+            <column name="id" type="NUMBER(19)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sub" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
