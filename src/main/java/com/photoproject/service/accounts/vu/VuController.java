@@ -21,7 +21,7 @@ public class VuController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/vu")
-    public Vu vu(@RequestParam(value = "name", defaultValue = "World") String name) {
+    public Vu vu(@RequestParam(value = "name", defaultValue = "Vu") String name) {
         return new Vu(counter.incrementAndGet(), String.format(template, name));
     }
 }
