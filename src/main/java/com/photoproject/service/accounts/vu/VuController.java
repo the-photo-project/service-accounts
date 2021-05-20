@@ -18,10 +18,16 @@ import java.util.concurrent.atomic.AtomicLong;
 public class VuController {
 
     private static final String template = "Xin chao, This is Vu's Controller, %s!";
+    private static final String templatetwo = "Xin chao, This is Vu's Second Function, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/vu")
     public Vu vu(@RequestParam(value = "name", defaultValue = "Vu") String name) {
         return new Vu(counter.incrementAndGet(), String.format(template, name));
+    }
+
+    @GetMapping("/vu/test2")
+    public Vu testtwo(@RequestParam(value = "name", defaultValue = "Vu") String name) {
+        return new Vu(counter.incrementAndGet(), String.format(templatetwo, name));
     }
 }
