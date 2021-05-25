@@ -2,19 +2,28 @@ package com.photoproject.service.accounts.huy;
 
 public class Huy {
 
-    private final long id;
-    private final String content;
+    private final int ngay;
+    private final int h;
+    private final int m;
+    private final int s;
 
-    public Huy(long id, String content) {
-        this.id = id;
-        this.content = content;
+    public Huy(int ngay, int h, int m, int s) {
+        this.ngay = ngay;
+        this.h = h;
+        this.m = m;
+        this.s = s;
     }
 
-    public long getId() {
-        return id;
+    public int getNgay() {
+        return ngay;
     }
-
-    public String getContent() {
-        return content;
+    public int getH() {
+        return h;
+    }
+    public int getM() {
+        return m;
+    }
+    public int getS() {
+        return s;
     }
 }
